@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/josefin_sans_italic</item>
+        <item>@font/josefin_slab</item>
+        <item>@font/josefin_slab_bold</item>
+    </array>
+</resources>
