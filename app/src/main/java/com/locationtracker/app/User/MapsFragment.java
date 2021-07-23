@@ -426,8 +426,6 @@ public class MapsFragment extends Fragment implements TextWatcher, View.OnClickL
                 Log.i(TAG, "Place not found: " + exception.getMessage());
             });
 
-            Log.i(TAG, "Place: " + p[0]);
-
             String address = place.get("vicinity");
             String name = place.get("name");
             String open = place.get("open_now");
