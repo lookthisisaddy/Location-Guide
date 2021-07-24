@@ -1,1 +1,2 @@
-# Frutsh App
+# Location Guide
+
