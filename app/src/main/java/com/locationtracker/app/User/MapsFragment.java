@@ -3,11 +3,11 @@ package com.locationtracker.app.User;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Looper;
 import android.text.Editable;
 import android.text.Html;
@@ -37,7 +37,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.common.api.ResolvableApiException;
-import com.google.android.gms.common.api.Result;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -57,7 +56,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.net.FetchPlaceRequest;
-import com.google.android.libraries.places.api.net.FetchPlaceResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -65,10 +63,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.maps.android.PolyUtil;
 import com.locationtracker.app.HelperClasses.APIData.DataParser;
 import com.locationtracker.app.HelperClasses.APIData.GetDirections;
+import com.locationtracker.app.HelperClasses.Adapters.NearbyPlacesAdapter;
+import com.locationtracker.app.HelperClasses.Adapters.SearchAutocompleteAdapter;
 import com.locationtracker.app.HelperClasses.Interfaces.AutoCompleteAdapterClickListener;
 import com.locationtracker.app.HelperClasses.Interfaces.PlacesAdapterClickListener;
-import com.locationtracker.app.HelperClasses.NearbyPlacesAdapter;
-import com.locationtracker.app.HelperClasses.SearchAdapter.SearchAutocompleteAdapter;
 import com.locationtracker.app.R;
 
 import java.io.IOException;
@@ -80,7 +78,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.atomic.AtomicReference;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.app.Activity.RESULT_CANCELED;
@@ -108,8 +105,6 @@ public class MapsFragment extends Fragment implements TextWatcher, View.OnClickL
     };
 
     final Location[] userLoc = new Location[1];
-
-    final Place[] p = new Place[1];
 
     HashMap<String, String> place;
 
@@ -154,7 +149,7 @@ public class MapsFragment extends Fragment implements TextWatcher, View.OnClickL
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_maps, container, false);
+        return inflater.inflate(R.layout.fragment_explore, container, false);
     }
 
     @Override
@@ -236,9 +231,9 @@ public class MapsFragment extends Fragment implements TextWatcher, View.OnClickL
 
         clickListeners();
 
-        if (isNetworkAvailable()){
+        if (isNetworkAvailable()) {
             Toast.makeText(requireContext(), "Online", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             Toast.makeText(requireContext(), "Offline", Toast.LENGTH_SHORT).show();
         }
     }
@@ -262,7 +257,7 @@ public class MapsFragment extends Fragment implements TextWatcher, View.OnClickL
     // TCP/HTTP/DNS (depending on the port, 53=DNS, 80=HTTP, etc.)
     //  Does not run in UI thread
     public boolean isOnline() {
-        
+
         try {
             int timeoutMs = 1500;
             Socket sock = new Socket();
@@ -348,8 +343,8 @@ public class MapsFragment extends Fragment implements TextWatcher, View.OnClickL
         } else if (view == closeBS) {
             modalSheet.dismiss();
 
-        }else if (view == walkButton){
-            if (directionsDetails != null){
+        } else if (view == walkButton) {
+            if (directionsDetails != null) {
                 String s = "Walking";
                 destDuration.setText(directionsDetails.get(0).get("walking"));
                 walkTime.setText(directionsDetails.get(0).get("walking"));
@@ -360,8 +355,8 @@ public class MapsFragment extends Fragment implements TextWatcher, View.OnClickL
             }
 
 
-        }else if (view == carButton){
-            if (directionsDetails != null){
+        } else if (view == carButton) {
+            if (directionsDetails != null) {
                 String s = "Driving";
                 destDuration.setText(directionsDetails.get(0).get("driving"));
                 carTime.setText(directionsDetails.get(0).get("driving"));
@@ -408,6 +403,12 @@ public class MapsFragment extends Fragment implements TextWatcher, View.OnClickL
 
             place = NearbyPlacesAdapter.placeList.get(cardNo);
 
+            String address = place.get("vicinity");
+            String name = place.get("name");
+            String open = place.get("open_now");
+            String rating = place.get("rating");
+            String totalRatings = place.get("user_ratings_total") + " reviews";
+
             final String placeId = place.get("place_id");
 
             final List<Place.Field> placeFields = Arrays.asList(
@@ -417,26 +418,26 @@ public class MapsFragment extends Fragment implements TextWatcher, View.OnClickL
 
             final FetchPlaceRequest request = FetchPlaceRequest.newInstance(placeId, placeFields);
 
+            final Place[] p = new Place[1];
+
             placesClient.fetchPlace(request).addOnSuccessListener((response) -> {
 
                 p[0] = response.getPlace();
+                if (p[0].getPhoneNumber() != null) {
+                    destCall.setText(p[0].getPhoneNumber());
+                } else {
+                    destCall.setText(getResources().getString(R.string.call_not_available));
+                }
 
 
             }).addOnFailureListener((exception) -> {
                 Log.i(TAG, "Place not found: " + exception.getMessage());
             });
 
-            String address = place.get("vicinity");
-            String name = place.get("name");
-            String open = place.get("open_now");
-            String rating = place.get("rating");
-            String totalRatings = place.get("user_ratings_total") + " reviews";
-
             destName.setText(name);
             destAddress.setText(address);
 
             if (rating != null) {
-                Log.d(TAG, "showDstDetails: " + rating);
                 destRating.setText(rating);
                 destRatingBar.setRating(Float.parseFloat(rating));
                 destTotalRat.setText(totalRatings);
@@ -463,6 +464,14 @@ public class MapsFragment extends Fragment implements TextWatcher, View.OnClickL
             walkButton.setSelected(true);
             carButton.setSelected(false);
 
+            for (int i = 0; i < polyline.get("walking").length; i++) {
+                PolylineOptions options = new PolylineOptions();
+                options.addAll(PolyUtil.decode(polyline.get("walking")[i]));
+                options.color(Color.parseColor("#0d47a1"));
+                options.width(15);
+                mMap.addPolyline(options);
+            }
+
             travelMode.setText(R.string.travel_default_mode);
             travelModeBtn.setImageResource(R.drawable.walking_icon);
 
@@ -472,55 +481,56 @@ public class MapsFragment extends Fragment implements TextWatcher, View.OnClickL
         }
     }
 
-    private List<HashMap<String,String>> getDirectionDetails(String placeId){
+    HashMap<String, String> durations = new HashMap<>();
+    HashMap<String, String[]> polyline = new HashMap<>();
+
+    private List<HashMap<String, String>> getDirectionDetails(String placeId) {
 
         String mode1 = "walking";
         String mode2 = "driving";
         String url1 = getDirectionURL(userLoc[0], placeId, mode1);
         String url2 = getDirectionURL(userLoc[0], placeId, mode2);
 
-        HashMap<String,String> urlsMap = new HashMap<>();
+        Log.d(TAG, "getDirectionDetails: " + url1);
+
+        HashMap<String, String> urlsMap = new HashMap<>();
         urlsMap.put("walking", url1);
         urlsMap.put("driving", url2);
 
-        HashMap<String,String> directionsData = null;
+        HashMap<String, String> directionsData = null;
 
         GetDirections task = new GetDirections();
         try {
-             directionsData = task.execute(urlsMap).get();
+            directionsData = task.execute(urlsMap).get();
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
 
         DataParser dataParser = new DataParser();
 
-        HashMap<String,String> durations = new HashMap<>();
-        HashMap<String,String> polyline = new HashMap<>();
-
         durations.put("walking", dataParser.destDuration(directionsData.get("walking")));
         durations.put("driving", dataParser.destDuration(directionsData.get("driving")));
-        polyline.put("walking", dataParser.polyline(directionsData.get("walking")));
-        polyline.put("driving", dataParser.polyline(directionsData.get("driving")));
 
-        List<HashMap<String,String>> directionDetails = new ArrayList<>();
+        polyline.put("walking", dataParser.parseDirections(directionsData.get("walking")));
+        polyline.put("driving", dataParser.parseDirections(directionsData.get("driving")));
+
+        List<HashMap<String, String>> directionDetails = new ArrayList<>();
         directionDetails.add(durations);
-        directionDetails.add(polyline);
 
         return directionDetails;
-
     }
 
     private final BottomSheetBehavior.BottomSheetCallback bottomSheetCallback =
             new BottomSheetBehavior.BottomSheetCallback() {
                 @Override
                 public void onStateChanged(@NonNull View bottomSheet, int newState) {
-
                 }
 
                 @Override
                 public void onSlide(@NonNull View bottomSheet, float slideOffset) {
 
                     if (slideOffset > 0.5f) {
+                        Log.d(TAG, "onSlide: " + slideOffset);
                         animateFab(slideOffset);
                     }
                     if (slideOffset == 1.0f) {
@@ -541,10 +551,6 @@ public class MapsFragment extends Fragment implements TextWatcher, View.OnClickL
 
     private String getDirectionURL(Location location, String placeId, String mode) {
 
-        //maps.googleapis.com/maps/api/directions/json?
-        // origin=Brooklyn&destination=Queens&mode=transit
-        // &key=AIzaSyAkTdh0hvcVInx6xXwaxMhZwAQ46l-KTBg
-
         return "https://maps.googleapis.com/maps/api/directions/json?"
                 + "origin=" + location.getLatitude() + "," + location.getLongitude()
                 + "&destination=place_id:" + placeId + "&mode=" + mode +
@@ -556,10 +562,10 @@ public class MapsFragment extends Fragment implements TextWatcher, View.OnClickL
     //Modal Bottom Sheet Dialog
     @Override
     public void onCardClick(int position) {
+        mMap.clear();
         placesAdapter.setMarker(position);
         modalSheet.dismiss();
         showDstDetails(position);
-        mMap.clear();
 
     }
 
@@ -578,10 +584,6 @@ public class MapsFragment extends Fragment implements TextWatcher, View.OnClickL
     }
 
     private String getPlaceTypeURL(Location location, String placeType) {
-
-        //https://maps.googleapis.com/maps/api/place/nearbysearch/json?
-        //location=19.014160,73.093995&radius=1500&type=restaurant
-        // &key=AIzaSyAkTdh0hvcVInx6xXwaxMhZwAQ46l-KTBg
 
         return "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
                 + "location=" + location.getLatitude() + "," + location.getLongitude() +
@@ -726,7 +728,6 @@ public class MapsFragment extends Fragment implements TextWatcher, View.OnClickL
     private final ActivityResultLauncher<String> permissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
                 if (result) {
-                    //permission granted
                     checkGps();
 
                 } else {

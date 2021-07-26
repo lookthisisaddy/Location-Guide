@@ -45,7 +45,7 @@ public class LoginFragment extends Fragment {
         login = view.findViewById(R.id.login_bt);
         forgetPass = view.findViewById(R.id.forget_bt);
 
-        animation = AnimationUtils.loadAnimation(getContext(), R.anim.frag_content_anim);
+        animation = AnimationUtils.loadAnimation(getContext(), R.anim.fragment_login_anim);
         emailLayout.setAnimation(animation);
         passLayout.setAnimation(animation);
         login.setAnimation(animation);

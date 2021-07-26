@@ -2,8 +2,6 @@ package com.locationtracker.app.HelperClasses.APIData;
 
 import android.os.AsyncTask;
 
-import com.locationtracker.app.HelperClasses.DownloadURL;
-
 public class GetNearbyPlace extends AsyncTask<String, Integer, String> {
 
     public static final String TAG = "GetNearbyPlace";
@@ -13,7 +11,7 @@ public class GetNearbyPlace extends AsyncTask<String, Integer, String> {
 
         String placesData = null;
 
-        DownloadURL downloadURL = new DownloadURL();
+        DownloadUrl downloadURL = new DownloadUrl();
         try {
             placesData = downloadURL.readUrl(urls[0]);
         } catch (Exception e) {

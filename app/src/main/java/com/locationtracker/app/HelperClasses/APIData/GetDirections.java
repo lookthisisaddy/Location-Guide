@@ -2,8 +2,6 @@ package com.locationtracker.app.HelperClasses.APIData;
 
 import android.os.AsyncTask;
 
-import com.locationtracker.app.HelperClasses.DownloadURL;
-
 import java.util.HashMap;
 
 public class GetDirections extends AsyncTask<HashMap<String,String>, String, HashMap<String,String>> {
@@ -16,7 +14,7 @@ public class GetDirections extends AsyncTask<HashMap<String,String>, String, Has
 
         HashMap<String,String> directionsData = new HashMap<>();
 
-        DownloadURL downloadURL = new DownloadURL();
+        DownloadUrl downloadURL = new DownloadUrl();
         try {
             directionsData.put("walking", downloadURL.readUrl(hashMaps[0].get("walking")));
             directionsData.put("driving", downloadURL.readUrl(hashMaps[0].get("driving")));

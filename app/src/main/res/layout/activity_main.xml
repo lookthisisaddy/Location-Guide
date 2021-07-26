@@ -12,7 +12,7 @@
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:headerLayout="@layout/nav_menu_header"
+        app:headerLayout="@layout/drawer_header"
         android:theme="@style/navigationTheme"
         app:menu="@menu/main_menu"
         android:layout_gravity="start"/>
@@ -38,6 +38,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
+                app:tint="@color/black"
                 android:src="@drawable/menu_icon" />
 
             <ImageView
@@ -49,6 +50,7 @@
                 android:background="@color/pink"
                 android:onClick="addUser"
                 android:padding="5dp"
+                app:tint="@color/black"
                 android:src="@drawable/add_icon"
                 tools:ignore="UsingOnClickInXml" />
 
@@ -57,6 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:textColor="@color/black"
                 android:text="@string/app_name"
                 android:textSize="24sp" />
         </RelativeLayout>

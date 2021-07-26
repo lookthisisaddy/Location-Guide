@@ -67,6 +67,7 @@
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
+                    app:tint="@color/quantum_purple"
                     android:src="@drawable/loc_icon"/>
 
                 <TextView
@@ -90,6 +91,7 @@
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
+                    app:tint="@color/quantum_purple"
                     android:src="@drawable/clock_icon"/>
 
                 <TextView

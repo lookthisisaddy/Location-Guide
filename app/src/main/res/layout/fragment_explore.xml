@@ -43,6 +43,7 @@
                 android:text="@string/search_a_place"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
+                app:drawableTint="@color/black"
                 app:drawableEndCompat="@drawable/search_icon" />
 
         </RelativeLayout>
@@ -77,6 +78,7 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        app:tint="@color/black"
                         android:src="@drawable/restaurant_icon" />
 
                 </RelativeLayout>
@@ -110,6 +112,7 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        app:tint="@color/black"
                         android:src="@drawable/hotel_icon" />
                 </RelativeLayout>
 
@@ -213,7 +216,7 @@
 
 
     <include android:id="@+id/loc_info_sheet"
-        layout="@layout/location_info" />
+        layout="@layout/place_info" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

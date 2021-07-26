@@ -20,16 +20,15 @@
 
     <Button
         style="@style/selectedBackground"
-        android:id="@+id/skip_btn"
+        android:id="@+id/login_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@android:color/transparent"
-        android:text="@string/skip_btn"
+        android:text="@string/close"
         android:textColor="@color/black"
-        android:visibility="invisible"
-        tools:ignore="UsingOnClickInXml" />
+        android:textAllCaps="false" />
 
     <ImageView
         android:id="@+id/imageView3"

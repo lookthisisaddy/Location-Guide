@@ -1,4 +1,4 @@
-package com.locationtracker.app.HelperClasses;
+package com.locationtracker.app.HelperClasses.Adapters;
 
 import android.location.Location;
 import android.view.LayoutInflater;

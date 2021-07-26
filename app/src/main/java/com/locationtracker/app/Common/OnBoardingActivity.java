@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.locationtracker.app.Common.LoginSignUp.LoginActivity;
-import com.locationtracker.app.HelperClasses.Onboarding.SliderAdapter;
+import com.locationtracker.app.HelperClasses.Adapters.SliderAdapter;
 import com.locationtracker.app.R;
 import com.locationtracker.app.User.MainActivity;
 
@@ -40,7 +40,7 @@ public class OnBoardingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_on_boarding);
+        setContentView(R.layout.activity_onboarding);
 
         //UI elements
         slider = findViewById(R.id.view_pager);
@@ -60,7 +60,7 @@ public class OnBoardingActivity extends AppCompatActivity {
 
     private void setDots(int position) {
 
-        dots = new TextView[4];
+        dots = new TextView[3];
         dotsLayout.removeAllViews();
 
         for (int i = 0; i < dots.length; i++) {
@@ -93,8 +93,6 @@ public class OnBoardingActivity extends AppCompatActivity {
             if (position == 0) {
                 letsStart.setVisibility(View.INVISIBLE);
             } else if (position == 1) {
-                letsStart.setVisibility(View.INVISIBLE);
-            } else if (position == 2) {
                 letsStart.setVisibility(View.INVISIBLE);
             } else {
                 animation = AnimationUtils.loadAnimation(OnBoardingActivity.this, R.anim.onboarding_anim);

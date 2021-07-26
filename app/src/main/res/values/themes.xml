@@ -44,7 +44,7 @@
     </style>
 
     <style name="current_loc_fab" parent="Widget.MaterialComponents.FloatingActionButton">
-        <item name="android:src">@drawable/my_loc_icon</item>
+        <item name="android:src">@drawable/current_loc_icon</item>
         <item name="tint">@color/deep_purple</item>
         <item name="backgroundTint">@color/white</item>
         <item name="fabCustomSize">50dp</item>

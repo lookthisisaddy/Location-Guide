@@ -1,4 +1,4 @@
-package com.locationtracker.app.HelperClasses;
+package com.locationtracker.app.HelperClasses.APIData;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class DownloadURL {
+public class DownloadUrl {
 
     public String readUrl(String string) throws IOException {
         String data = "";
@@ -21,7 +21,7 @@ public class DownloadURL {
             inputStream = urlConnection.getInputStream();
             BufferedReader bReader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuilder builder = new StringBuilder();
-            String line = "";
+            String line;
             while ((line = bReader.readLine()) != null) {
                 builder.append(line);
             }

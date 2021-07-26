@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -27,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     ConstraintLayout contentLayout;
 
-
     ImageView menuIcon;
 
 
@@ -47,12 +47,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationDrawer();
 
-        if (savedInstanceState == null){
+        if (savedInstanceState == null) {
 
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_container,
-                    new HomeFragment()).commit();
+                    new MapsFragment()).commit();
 
-            navigationView.setCheckedItem(R.id.nav_home);
+            navigationView.setCheckedItem(R.id.nav_explore);
 
         }
     }
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //navigation drawer
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setCheckedItem(R.id.nav_home);
+        navigationView.setCheckedItem(R.id.nav_explore);
 
         menuIcon.setOnClickListener(view -> {
             if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
@@ -103,9 +103,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
 
-        if (drawerLayout.isDrawerVisible(GravityCompat.START)){
+        if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }else {
+        } else {
             super.onBackPressed();
         }
 
@@ -113,19 +113,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
-            case R.id.nav_home:
-
-                getSupportFragmentManager().beginTransaction().replace(R.id.frag_container,
-                        new HomeFragment()).commit();
-                break;
-
-            case R.id.nav_search:
+            case R.id.nav_explore:
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.frag_container,
                         new MapsFragment()).commit();
                 break;
+
 
             case R.id.nav_profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.frag_container,

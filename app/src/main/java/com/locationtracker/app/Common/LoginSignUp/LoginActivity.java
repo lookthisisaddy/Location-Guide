@@ -15,21 +15,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
-import com.locationtracker.app.HelperClasses.LoginAdapter.LoginAdapter;
+import com.locationtracker.app.HelperClasses.Adapters.LoginAdapter;
 import com.locationtracker.app.R;
 import com.locationtracker.app.User.MainActivity;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     TabLayout tabLayout;
     ViewPager2 viewPager;
     RelativeLayout layout1, layout2, layout3;
     ImageView fb, google, twitter;
-    Button skip;
+    Button close;
 
     Animation fab_anim;
 
-    SharedPreferences skipOneTime;
+    SharedPreferences showSkip;
+
+    boolean firstTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +49,14 @@ public class LoginActivity extends AppCompatActivity {
         fb = findViewById(R.id.fab_fb);
         google = findViewById(R.id.fab_google);
         twitter = findViewById(R.id.fab_twi);
-        skip = findViewById(R.id.skip_btn);
+        close = findViewById(R.id.login_close);
 
         tabLayout.addTab(tabLayout.newTab().setText("Login"));
         tabLayout.addTab(tabLayout.newTab().setText("Sign Up"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         //animation
-        fab_anim = AnimationUtils.loadAnimation(this, R.anim.fab_anim);
+        fab_anim = AnimationUtils.loadAnimation(this, R.anim.social_media_fab_anim);
         layout1.setAnimation(fab_anim);
         layout2.setAnimation(fab_anim);
         layout3.setAnimation(fab_anim);
@@ -88,25 +90,32 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        skipOneTime = getSharedPreferences("skipOneTime", MODE_PRIVATE);
-        boolean firstTime = skipOneTime.getBoolean("firstTime", true);
+        showSkip = getSharedPreferences("showSkip", MODE_PRIVATE);
+        firstTime = showSkip.getBoolean("firstTime", true);
+
+        close.setOnClickListener(this);
 
         if (firstTime) {
-            skip.setVisibility(View.VISIBLE);
-            skipOneTime.edit().putBoolean("firstTime", false).apply();
-            skip.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            });
+            showSkip.edit().putBoolean("firstTime", false).apply();
+            close.setText(getResources().getString(R.string.skip_btn));
         }
+
     }
 
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == close){
+            if (firstTime){
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+            finish();
+        }
     }
 }

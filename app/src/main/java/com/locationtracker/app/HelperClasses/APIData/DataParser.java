@@ -11,8 +11,6 @@ import java.util.List;
 public class DataParser {
 
     private static final String TAG = "DataParser";
-
-
     //PLACES API
 
     //return hashMap for each place

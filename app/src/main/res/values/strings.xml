@@ -6,15 +6,14 @@
 
     <!-- Titles -->
     <string name="first_slide_title">Search your location</string>
-    <string name="second_slide_title">Make a call</string>
-    <string name="third_slide_title">Add missing place</string>
-    <string name="fourth_slide_title">Sit back and enjoy</string>
+    <string name="second_slide_title">Don\'t know where to go?</string>
+    <string name="third_slide_title">Know your timeline</string>
+
 
     <!-- Description -->
     <string name="first_slide_desc">You can search any place nearby or within the specified city.</string>
-    <string name="second_slide_desc">We provide almost all the numbers of all departments and shops registered with us.</string>
-    <string name="third_slide_desc">If you have a shop or something and want to be part of our growing industry then you can add your place.</string>
-    <string name="fourth_slide_desc">We will handle everything for you.</string>
+    <string name="second_slide_desc">No worry. We provide the details of all nearby restaurants, hotels etc. with just a click.</string>
+    <string name="third_slide_desc">You can check your location history. Delete anytime you want.</string>
 
     <!-- Buttons -->
     <string name="skip_btn">Skip</string>
@@ -22,7 +21,8 @@
     <string name="lets_get_started">Lets get started</string>
 
 
-    <!-- Strings for on UserDashboard -->
+    <!-- Strings for on Login Screen -->
+    <string name="close">Close</string>
 
     <!-- Categories -->
     <string name="lodging">Hotels</string>
@@ -32,27 +32,21 @@
     <string name="airports">Education</string>
 
     <!-- Titles and desc -->
-    <string name="featured_loc">All featured locations</string>
-    <string name="featured_loc_desc">All the locations that are featured have top demand in the town</string>
-    <string name="most_viewed_loc">Most Viewed</string>
-    <string name="view_all">View all</string>
-    <string name="categories">Categories</string>
     <string name="search">Search…</string>
 
 
     <!-- Strings for on Main Menu -->
-    <string name="nav_home">Home</string>
+    <string name="nav_explore">Explore</string>
     <string name="nav_search">Search</string>
-    <string name="nav_all_categories">All Categories</string>
     <string name="nav_search_on_map">Maps</string>
     <string name="profile">Profile</string>
     <string name="logout">Logout</string>
     <string name="share">Share</string>
     <string name="rate_us">Rate Us</string>
-    <string name="slogan_name">Your guide in your pocket</string>
+    <string name="slogan_name">A guide for tourists</string>
 
     <!-- Strings for on Login Screen -->
-    <string name="welcome_message">Welcome to Location Tracker</string>
+    <string name="welcome_message">Welcome to Location Guide</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -60,13 +54,9 @@
     <string name="sign_up">Sign Up</string>
     <string name="forget_password">Forget Password?</string>
 
-
-
     <!-- Search Fragment -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_a_place">Search a place</string>
     <string name="suggestions">Place</string>
-
 
     <string name="call_not_available">Not available</string>
     <string name="travel_default_mode">Walking</string>

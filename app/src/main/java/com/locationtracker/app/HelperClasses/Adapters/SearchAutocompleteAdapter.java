@@ -1,4 +1,4 @@
-package com.locationtracker.app.HelperClasses.SearchAdapter;
+package com.locationtracker.app.HelperClasses.Adapters;
 
 import android.content.Context;
 import android.graphics.Typeface;

@@ -49,7 +49,7 @@
         app:endIconMode="password_toggle"
         app:endIconTint="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        app:startIconDrawable="@drawable/pass_icon"
+        app:startIconDrawable="@drawable/password_icon"
         app:startIconTint="@color/black"
         tools:layout_editor_absoluteX="30dp">
 

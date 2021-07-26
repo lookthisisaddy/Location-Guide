@@ -34,34 +34,31 @@ public class SplashActivity extends AppCompatActivity {
         logoImageView = findViewById(R.id.logo_image);
         copyrightsTextView = findViewById(R.id.copyrights);
 
-        logo_anim = AnimationUtils.loadAnimation(this, R.anim.logo_anim);
-        bottom_anim = AnimationUtils.loadAnimation(this, R.anim.bottom_anim);
+        logo_anim = AnimationUtils.loadAnimation(this, R.anim.splash_logo_anim);
+        bottom_anim = AnimationUtils.loadAnimation(this, R.anim.splash_bottom_anim);
 
         logoImageView.setAnimation(logo_anim);
         copyrightsTextView.setAnimation(bottom_anim);
 
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        handler.postDelayed(() -> {
 
-                onBoardingPref = getSharedPreferences("onBoardingPref", MODE_PRIVATE);
+            onBoardingPref = getSharedPreferences("onBoardingPref", MODE_PRIVATE);
 
-                boolean firstTime = onBoardingPref.getBoolean("firstTime", true);
+            boolean firstTime = onBoardingPref.getBoolean("firstTime", true);
 
-                if (firstTime) {
-                    onBoardingPref.edit().putBoolean("firstTime", false).apply();
-                    Intent intent = new Intent(SplashActivity.this, OnBoardingActivity.class);
-                    startActivity(intent);
+            if (firstTime) {
+                onBoardingPref.edit().putBoolean("firstTime", false).apply();
+                Intent intent = new Intent(SplashActivity.this, OnBoardingActivity.class);
+                startActivity(intent);
 
-                } else {
-                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                    startActivity(intent);
-                }
-
-                finish();
-
+            } else {
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
             }
+
+            finish();
+
         }, 3000);
     }
 }

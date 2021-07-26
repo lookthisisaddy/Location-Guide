@@ -1,4 +1,4 @@
-package com.locationtracker.app.HelperClasses.Onboarding;
+package com.locationtracker.app.HelperClasses.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -33,14 +33,12 @@ public class SliderAdapter extends PagerAdapter {
         R.string.first_slide_title,
         R.string.second_slide_title,
         R.string.third_slide_title,
-        R.string.fourth_slide_title
     };
 
     int[] descriptions = {
         R.string.first_slide_desc,
         R.string.second_slide_desc,
         R.string.third_slide_desc,
-        R.string.fourth_slide_desc
     };
 
     @Override
@@ -50,15 +48,15 @@ public class SliderAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view == (ConstraintLayout) object;
+        return view == object;
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
-        inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.boarding_slides, container, false);
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.onboarding_slide, container, false);
 
         ImageView sliderImage = view.findViewById(R.id.slider_image);
         TextView heading = view.findViewById(R.id.slider_heading);

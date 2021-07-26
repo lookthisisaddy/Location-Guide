@@ -1,4 +1,4 @@
-package com.locationtracker.app.HelperClasses.LoginAdapter;
+package com.locationtracker.app.HelperClasses.Adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
