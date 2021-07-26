@@ -6,6 +6,12 @@ Similar to G-Maps, it uses device's GPS to show current location of the user. Us
 
 ### Screenshots
 <img src="https://github.com/lookthisisaddy/Location-Guide/blob/master/app/screenshots/explore.png" width="180" height="380">
+<img src="https://github.com/lookthisisaddy/Location-Guide/blob/master/app/screenshots/restaurant.png" width="180" height="380">
+<img src="https://github.com/lookthisisaddy/Location-Guide/blob/master/app/screenshots/sights.png" width="180" height="380">
+<img src="https://github.com/lookthisisaddy/Location-Guide/blob/master/app/screenshots/polyline.png" width="180" height="380">
+<img src="https://github.com/lookthisisaddy/Location-Guide/blob/master/app/screenshots/drawer.png" width="180" height="380">
+<img src="https://github.com/lookthisisaddy/Location-Guide/blob/master/app/screenshots/login.png" width="180" height="380">
+
 
 ### Features
 - Search any place on map
