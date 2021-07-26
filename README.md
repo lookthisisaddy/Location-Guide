@@ -6,6 +6,15 @@ Similar to G-Maps, it uses device's GPS to show current location of the user. Us
 
 ### Screenshots
 
+<p float="left">
+<img src="https://github.com/lookthisisaddy/Location-Guide/blob/master/app/screenshots/explore.png" width="180" height="380" hspace="10"> 
+<img src="https://github.com/lookthisisaddy/Location-Guide/blob/master/app/screenshots/restaurant.png" width="180" height="380" hspace="10">
+<img src="https://github.com/lookthisisaddy/Location-Guide/blob/master/app/screenshots/sights.png" width="180" height="380" hspace="10">
+<img src="https://github.com/lookthisisaddy/Location-Guide/blob/master/app/screenshots/polyline.png" width="180" height="380" hspace="10">
+<img src="https://github.com/lookthisisaddy/Location-Guide/blob/master/app/screenshots/drawer.png" width="180" height="380" hspace="10">
+<img src="https://github.com/lookthisisaddy/Location-Guide/blob/master/app/screenshots/login.png" width="180" height="380" hspace="10"> 
+</p>
+
 ### Features
 - Search any place on map
 - Get address, phone no. opening hours, ratings, travel duration and route
@@ -14,10 +23,16 @@ Similar to G-Maps, it uses device's GPS to show current location of the user. Us
 - Onboarding and splash screen
 
 ### Technologies used
+- Java
+- Android Studio
 - Google Maps Platform APIs - ***Places API & Directions API***
 - ***Maps SDk*** for Map
 - ***Places SDK*** for search suggestions.
-- Android Studio
 
+### Upcoming features
+- Navigation
+- Location history
 
+### Contributions
+Any help related to code cleaning, design changes or real heavy code changes is always welcome. 
  
