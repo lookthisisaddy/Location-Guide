@@ -34,5 +34,5 @@ Similar to G-Maps, it uses device's GPS to show current location of the user. Us
 - Location history
 
 ### Contributions
-Any help related to code cleaning, design changes or real heavy code changes are always welcome. 
+Any help related to code cleaning, design changes or real heavy code changes is always welcome. 
  
