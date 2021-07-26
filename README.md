@@ -23,10 +23,16 @@ Similar to G-Maps, it uses device's GPS to show current location of the user. Us
 - Onboarding and splash screen
 
 ### Technologies used
+- Java
+- Android Studio
 - Google Maps Platform APIs - ***Places API & Directions API***
 - ***Maps SDk*** for Map
 - ***Places SDK*** for search suggestions.
-- Android Studio
 
+### Upcoming features
+- Navigation
+- Location history
 
+### Contributions
+Any help related to code cleaning, design changes or real heavy code changes are always welcome. 
  
