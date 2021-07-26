@@ -7,7 +7,7 @@ Similar to G-Maps, it uses device's GPS to show current location of the user. Us
 ### Screenshots
 
 ### Features
-- Search any place 
+- Search any place on map
 - Get address, phone no. opening hours, ratings, travel duration and route
 - Login/Signup screen
 - User profile
