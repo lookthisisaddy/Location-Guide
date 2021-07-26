@@ -8,11 +8,11 @@ Similar to G-Maps, it uses device's GPS to show current location of the user. Us
 - Search any place 
 - Get address, phone no. opening hours, ratings, travel duration and route
 - Login/Signup screen
-- OnBoarding screen
 - User profile
+- Onboarding and splash screen
 
 ### Technologies used
-- Google Maps Platform APIs - ***Places & Directions***
+- Google Maps Platform APIs - **Places API & Directions API**
 - ***Maps SDk*** for Map
 - ***Places SDK*** for search suggestions.
 - Android Studio
