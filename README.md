@@ -29,6 +29,7 @@ Similar to G-Maps, it uses device's GPS to show current location of the user. Us
 - Google Maps Platform APIs - ***Places API & Directions API***
 - ***Maps SDk*** for Map
 - ***Places SDK*** for search suggestions.
+- Adobe XD
 
 ### Upcoming features
 - Navigation
