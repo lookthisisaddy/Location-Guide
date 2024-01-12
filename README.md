@@ -31,9 +31,6 @@ Similar to G-Maps, it uses device's GPS to show current location of the user. Us
 - ***Places SDK*** for search suggestions.
 - Adobe XD
 
-### Upcoming features
-- Navigation
-- Location history
 
 ### Contributions
 Any help related to code cleaning, design changes or real heavy code changes is always welcome. 
